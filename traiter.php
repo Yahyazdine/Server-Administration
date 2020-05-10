@@ -16,8 +16,8 @@ echo "Database is connected";
 
 if(isset($_POST['username'])){
     
-    $uname=$_POST['username'];
-    $password=$_POST['pass'];
+    $uname=mysqli_real_escape_string($connect,$_POST['username']);
+    $password=mysqli_real_escape_string($_POST['pass']);
     
     $sql="select * from user where username='".$uname."'AND password='".$password."' limit 1";
     

@@ -11,7 +11,8 @@ and open the template in the editor.
     </head>
     <body>
         <?php
-            echo "welciom admin";
+            echo "welcom admin\n";
+            
         ?>
     </body>
 </html>

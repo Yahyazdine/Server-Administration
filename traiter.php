@@ -15,14 +15,14 @@ if(isset($_POST['username'])){
     $username= mysqli_real_escape_string($connect,$_POST['username']);
     
     $pass=mysqli_real_escape_string($connect,$_POST['pass']);
-    //$pass= md5($pass);
+    $pass= md5($pass);
     
-    $sql="insert into user(username,password)values('$username','$pass')";
+    $sql="select * from user where username='".$username."'AND password='".$pass."' limit 1";
     
-     mysqli_query($connect,$sql);
+    $result= mysqli_query($connect,$sql);
     if(mysqli_num_rows($result)==1){
           
-            header("Location: accueil.html");
+            header("Location: accueil.php");
          exit();        
     }
     else{

@@ -1,4 +1,15 @@
-<!DOCTYPE html>
+<?php
+$server='127.0.0.1';
+$user="root";
+$password='';
+$datbase='test';
+$connect= mysqli_connect($server,$user,$password,$datbase);
+if (mysqli_connect_errno()) {
+    die("cannot connect to database".mysqli_connect_errno());
+}       
+?>
+
+<?php<!DOCTYPE html>
 <html>
 <head>
 	<title>Serveurs</title>
@@ -12,7 +23,7 @@
 		<div class="sidebar-head"></div>
 		<div class="sidebar-body">
 			<ul>
-				<li><a href="accueil.html"><i class="fa fa-home"></i>Accueil</a></li>
+				<li><a href="accueil.php"><i class="fa fa-home"></i>Accueil</a></li>
 				<li><a href="" class="active"><i class="fa fa-server"></i>Serveurs</a></li>
 				<li><a href=""><i class="fa fa-users"></i>Utilisateurs</a></li>
 			</ul>
@@ -48,7 +59,7 @@
 				<div class="row mb-3 mt-4">
         			<div class="col-md-6"><h4>Serveurs</h4></div>
         			<div class="col-md-6 text-right">
-        				<a href="" class="btn btn-primary" type="button" role="button">
+        				<a href="ajouter.php" class="btn btn-primary" type="button" role="button">
         					<i class="fa fa-plus"></i> Ajouter un serveur
         				</a>
         			</div>
@@ -88,7 +99,7 @@
 								</a>
 							</div>
 							<div>
-								<a href=""  class="btn" style="color: #0066ff;" data-toggle="tooltip" data-placement="top" title="Voir détails">
+								<a href="détails-serveur.php"  class="btn" style="color: #0066ff;" data-toggle="tooltip" data-placement="top" title="Voir détails">
 									<i class="fa fa-angle-double-right"></i>
 								</a>
 							</div>

@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="utf-8">
  <title> Login Form in HTML5 and CSS3</title>
 <link rel="stylesheet" type="text/css" href="css/util.css">
  <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
@@ -38,8 +39,8 @@
 					</div>
                                     <p>
                                         <?php         
-                                        if (isset($message)){
-                                        echo $message;}
+                                        if(isset($_SESSION['username']))
+                                        echo $_SESSION['message'];
                                         ?>
                                     </p>
 
@@ -48,6 +49,12 @@
 							Login
 						</button>
 					</div>
+                                    <div class="container-login100-form-btn p-t-10">
+                                        <a class="login100-form-btn" href="registrer.php" style="color:#e0e0e0;">
+							register
+						</a>
+					</div>
+                                    
 
 					
 

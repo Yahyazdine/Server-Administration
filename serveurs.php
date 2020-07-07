@@ -1,7 +1,6 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
-<head> 
-        <meta charset="utf-8"> 
+<head>
 	<title>Serveurs</title>
 	<link rel="stylesheet" type="text/css" href="css/style1.css">
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
@@ -26,7 +25,7 @@
 	<div class="page-container">
 		<nav class="navbar navbar-expand-sm fixed-top">
 			<div class="navbrand">
-				<a href="">
+				<a href="" class="btn">
 					<i class="fa fa-user" style="font-size: 25px;"></i>
 					<span style="font-size: 18px;">Nom d'utilisateur</span>
 				</a>
@@ -34,7 +33,9 @@
 			<div class="nav-item ml-auto">
 				<div class="profil">
 					<div class="item mr-4">
-						<a href="" style="font-size: 16px;"><i class="fa fa-sign-out"></i> déconnecter</a>
+						<a href="" class="btn" style="color:#f52a0f;font-size: 16px;">
+							<i class="fa fa-sign-out"></i> déconnecter
+						</a>
 					</div>
 				</div>
 				
@@ -55,30 +56,82 @@
     			<hr width="100%">
 				<div class="container">
 					
-					<div class="row border mt-4 mb-4 mx-auto bg-white" style="width: 800px; height: 100px;">
-						<div class="col-md-4 h-100 bg-success">
-							<center style="margin-top: 40px;"><H4>Serveur 1</H4></center>
+					<div class="row border mt-4 mb-4 mx-auto bg-white" style="width: 800px;">
+						<div class="col-md-4 bg-success">
+							<center style="height:100%;margin-top: 40px;"><H4>Serveur 1</H4></center>
 						</div>
-						<div class="col-md-4 h-100"></div>
-						<div class="col-md-4 h-100">
+						<div class="col-md-7 h-100 pl-0 pr-0">
+							<table class="table table-striped w-100 mb-0">
+ 								<tr>
+ 									<td><b>@IP : </b></td>
+ 									<td>115.111.111.1</td>
+ 								</tr>
+ 								<tr>
+ 									<td><b>@MAC : </b></td>
+ 									<td>A5:63:38:30</td>
+ 								</tr>
+ 								<tr>
+ 									<td><b>Etat : </b></td>
+ 									<td class="text-success">UP</td>
+ 								</tr>
+							</table>
+						</div>
+						<div class="col-md-1 pt-3 border">
 							<div>
-								<a href="" type="button" role="button" class="btn btn-danger">
-									<i class="fa fa-trash"></i> Supprimer
+								<a href=""  class="btn" style="color:#d62a13;" data-toggle="tooltip" data-placement="top" title="Supprimer">
+									<i class="fa fa-trash"></i>
+								</a>
+							</div>
+							<div>
+								<a href=""  class="btn" style="color: #12b51d;" data-toggle="tooltip" data-placement="top" title="Modifier">
+									<i class="fa fa-edit"></i>
+								</a>
+							</div>
+							<div>
+								<a href=""  class="btn" style="color: #0066ff;" data-toggle="tooltip" data-placement="top" title="Voir détails">
+									<i class="fa fa-angle-double-right"></i>
 								</a>
 							</div>
 						</div>
 					</div>
-
-					<div class="row border mt-4 mb-4 mx-auto bg-white" style="width: 800px; height: 100px;">
-						<div class="col-md-4 h-100 bg-danger" ></div>
-						<div class="col-md-4 h-100" ></div>
-						<div class="col-md-4 h-100" ></div>
-					</div>
-					<div class="row border mt-4 mb-4 mx-auto bg-white" style="width: 800px; height: 100px;">
-						<div class="col-md-4 h-100 bg-danger" ></div>
-						<div class="col-md-4 h-100" ></div>
-						<div class="col-md-4 h-100" ></div>
-					</div>
+					<div class="row border mt-4 mb-4 mx-auto bg-white" style="width: 800px;">
+						<div class="col-md-4 bg-danger">
+							<center style="height:100%;margin-top: 40px;"><H4>Serveur 2</H4></center>
+						</div>
+						<div class="col-md-7 h-100 pl-0 pr-0">
+							<table class="table table-striped w-100 mb-0">
+ 								<tr>
+ 									<td><b>@IP : </b></td>
+ 									<td>115.111.111.1</td>
+ 								</tr>
+ 								<tr>
+ 									<td><b>@MAC : </b></td>
+ 									<td>A5:63:38:30</td>
+ 								</tr>
+ 								<tr>
+ 									<td><b>Etat : </b></td>
+ 									<td class="text-danger">DOWN</td>
+ 								</tr>
+							</table>
+						</div>
+						<div class="col-md-1 pt-3 border">
+							<div>
+								<a href=""  class="btn" style="color:#d62a13;" data-toggle="tooltip" data-placement="top" title="Supprimer">
+									<i class="fa fa-trash"></i>
+								</a>
+							</div>
+							<div>
+								<a href=""  class="btn" style="color: #12b51d;" data-toggle="tooltip" data-placement="top" title="Modifier">
+									<i class="fa fa-edit"></i>
+								</a>
+							</div>
+							<div>
+								<a href=""  class="btn" style="color: #0066ff;" data-toggle="tooltip" data-placement="top" title="Voir détails">
+									<i class="fa fa-angle-double-right"></i>
+								</a>
+							</div>
+						</div>
+					</div>  
 					
 				</div>
 			</div>
@@ -95,6 +148,12 @@
 	<script src="js/popper.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/bootstrap.js"></script>
+
+	<script type="text/javascript">
+		$(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+      });
+	</script>
 
 </body>
 </html>

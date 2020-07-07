@@ -46,7 +46,7 @@ mysqli_close($connect);
 	<div class="limiter">
 		<div class="container-login100" style="background-image: url('images/img-07.jpg');">
 			<div class="wrap-login100 p-b-30">
-				<form class="login100-form validate-form" action="register.php" method="POST">
+                            <form class="login100-form validate-form" action="registrer.php" method="POST">
 					<div class="login100-form-avatar">
 						
 					</div>

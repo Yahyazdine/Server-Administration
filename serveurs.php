@@ -9,7 +9,8 @@ if (mysqli_connect_errno()) {
 }       
 ?>
 
-<?php<!DOCTYPE html>
+
+<!DOCTYPE html>
 <html>
 <head>
 	<title>Serveurs</title>
@@ -17,6 +18,7 @@ if (mysqli_connect_errno()) {
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 </head>
+
 <body style="background-color: #e5e5e5;">
 
 	<nav class="sidebar">

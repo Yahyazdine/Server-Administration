@@ -13,8 +13,8 @@
 		<div class="sidebar-head"></div>
 		<div class="sidebar-body">
 			<ul>
-				<li><a href="accueil.html"><i class="fa fa-home"></i>Accueil</a></li>
-				<li><a href="serveurs.html" class="active"><i class="fa fa-server"></i>Serveurs</a></li>
+				<li><a href="accueil.php"><i class="fa fa-home"></i>Accueil</a></li>
+				<li><a href="serveurs.php" class="active"><i class="fa fa-server"></i>Serveurs</a></li>
 				<li><a href=""><i class="fa fa-users"></i>Utilisateurs</a></li>
 			</ul>
 
@@ -62,59 +62,87 @@
                                 </div>
                             </div>
                             <div class="row mt-2 mb-4">
-                                <div class="col-md-5 bg-white rounded shadow pb-2 pt-2">
-                                    <h5>Info du Serveur :</h5>
-                                    <table class="table table-striped w-100 mb-0 mt-4">
-                                        <tr>
-                                            <td><b>@IP : </b></td>
-                                            <td>115.111.111.1</td>
-                                        </tr>
-                                        <tr>
-                                            <td><b>@MAC : </b></td>
-                                            <td>A5:63:38:30</td>
-                                        </tr>
-                                        <tr>
-                                            <td><b>Etat : </b></td>
-                                            <td class="text-danger">DOWN</td>
-                                        </tr>
-                                        <tr>
-                                            <td><b>OS : </b></td>
-                                            <td>AZAZA</td>
-                                        </tr>
-                                        <tr>
-                                            <td><b>User : </b></td>
-                                            <td>User1</td>
-                                        </tr>
-                                    </table>
+                                <div class="col-md-4">
+                                    <div class="bg-white h-100 shadow px-2 rounded">
+                                        <h5>Info du Serveur :</h5>
+                                        <table class="table table-striped w-100 mb-0 mt-4">
+                                            <tr>
+                                                <td><b>@IP : </b></td>
+                                                <td>115.111.111.1</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>@MAC : </b></td>
+                                                <td>A5:63:38:30</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Etat : </b></td>
+                                                <td class="text-danger">DOWN</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>OS : </b></td>
+                                                <td>AZAZA</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>User : </b></td>
+                                                <td>User1</td>
+                                            </tr>
+                                        </table>
+                                    </div>
                                 </div>
-                                <div class="col-md-6 ml-auto bg-white rounded shadow pb-2 pt-2">
-                                    <h5>Disque Dur :</h5>
-                                    <table class="table table-striped w-100 mb-0 mt-4">
-                                        <tr>
-                                            <td><b>Nom : </b></td>
-                                            <td>Disque dur1</td>
-                                        </tr>
-                                        <tr>
-                                            <td><b>Taille : </b></td>
-                                            <td>256 go</td>
-                                        </tr>
-                                        <tr>
-                                            <td><b>Utilisé : </b></td>
-                                            <td>20%</td>
-                                        </tr>
-                                        <tr>
-                                            <td><b>Disponible : </b></td>
-                                            <td>80 go</td>
-                                        </tr>
-                                        <tr>
-                                            <td><b>Pourcentage : </b></td>
-                                            <td>40%</td>
-                                        </tr>
-                                        <tr>
-                                            <td><b>Date : </b></td>
-                                            <td>13/12/2020</td>
-                                        </tr>
-                                    </table>
+                                <div class="col-md-4">
+                                    <div class="bg-white h-100 shadow px-2 rounded">
+                                        <h5>Disque Dur :</h5>
+                                        <table class="table table-striped w-100 mb-0 mt-4">
+                                            <tr>
+                                                <td><b>Nom : </b></td>
+                                                <td>Disque dur1</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Taille : </b></td>
+                                                <td>256 go</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Utilisé : </b></td>
+                                                <td>20%</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Disponible : </b></td>
+                                                <td>80 go</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Pourcentage : </b></td>
+                                                <td>40%</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Date : </b></td>
+                                                <td>13/12/2020</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="bg-white h-100 shadow px-2 rounded">
+                                        <h5>RAM :</h5>
+                                        <table class="table table-striped w-100 mb-0 mt-4">
+                                            <tr>
+                                                <td><b>Nom : </b></td>
+                                                <td>RAM1</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Taille : </b></td>
+                                                <td>16 go</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Utilisé : </b></td>
+                                                <td>8 go</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Disponible : </b></td>
+                                                <td>8 go</td>
+                                            </tr>
+                                            
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                             <hr width="100%">

@@ -13,7 +13,7 @@
 		<div class="sidebar-body">
 			<ul>
 				<li><a href="accueil.php"><i class="fa fa-home"></i>Accueil</a></li>
-				<li><a href="serveurs.html" class="active"><i class="fa fa-server"></i>Serveurs</a></li>
+				<li><a href="serveurs.php" class="active"><i class="fa fa-server"></i>Serveurs</a></li>
 				<li><a href=""><i class="fa fa-users"></i>Utilisateurs</a></li>
 			</ul>
 

@@ -18,7 +18,7 @@ if(isset($_POST['ok']) ){
     $pass2= md5($pass2);
     $adminpass=mysqli_real_escape_string($connect,$_POST['adminpass']);
     $adminpass= md5($adminpass);
-    
+    //$sql='select'
     $sql="insert into user(username,password)values('$username','$pass')";
     mysqli_query($connect,$sql);
     $_SESSION['message']='you are now logged in';

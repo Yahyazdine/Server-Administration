@@ -1,5 +1,5 @@
-﻿<?php 
-
+<?php 
+include'traiter.php';
 if(!session_id()){ session_start();}
 
 if (!isset($_SESSION['username'])){
@@ -11,41 +11,22 @@ if (!isset($_SESSION['username'])){
 
 ?>
 <?php 
-include'traiter.php';
+
 $sql="select * from user ";
 $result= mysqli_query($connect,$sql);
 
 $ligne= mysqli_fetch_row($result);
 $nom=$ligne[1];
- 
+ if (isset($_post['changer'])){
+     $name=$_POST['nom'];
+     $pasw=md5($_POST['mdp']);
+
+    $sql="UPDATE user SET username = '".$_name."'AND password= '".$pasw."'";
+    $result= mysqli_query($connect,$sql);
+ }
 
 ?>
-<?php 
 
-if(isset($_POST['ajouter']))
-{
-	$nom=$_POST['nom'];
-	$adrss=$_POST['adresse'];
-	$user=$_POST['user'];
-	$pwd=$_POST['password'];
- 
-
-$pyscript = 'scripts_py/Script_add_server.py';
-$python = 'C:\Users\ANAS\AppData\Local\Programs\Python\Python38-32\python.exe';
-$cmd='$python $pyscript $nom $adrss $user $pwd';
-exec("$cmd", $output);
-
-$pyscript1 ='scripts_py/Script_storage.py';
-$cmd1='$python $pyscript1';
-exec("$cmd1", $output);
-
-$pyscript2 ='scripts_py/Script_ram.py';
-$cmd2='$python $pyscript2';
-exec("$cmd2", $output);
-
-header("Location: serveurs.php");
-}
-?> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -67,6 +48,7 @@ header("Location: serveurs.php");
 			<ul>
 				<li><a href="accueil.php"><i class="fa fa-home"></i>Accueil</a></li>
 				<li><a href="serveurs.php" class="active"><i class="fa fa-server"></i>Serveurs</a></li>
+				
 			</ul>
 
 		</div>
@@ -77,7 +59,7 @@ header("Location: serveurs.php");
 	<div class="page-container">
 		<nav class="navbar navbar-expand-sm fixed-top">
 			<div class="navbrand">
-				<a href="user_name.php" class="btn">
+				<a href="" class="btn">
 					<i class="fa fa-user" style="font-size: 25px;"></i>
 					<span style="font-size: 18px;"><?php echo $nom?></span>
 				</a>
@@ -96,7 +78,7 @@ header("Location: serveurs.php");
 		<div class="contenu">
 			<div class="container">
 				<div class="row mb-3 mt-4">
-        			<div class="col-md-6"><h4>Ajouter serveur</h4></div>
+        			<div class="col-md-6"><h4>Pour changer le nom et le mot de passe</h4></div>
         			<div class="col-md-6 text-right">
         				<a href="javascript:history.back()" class="btn btn-danger"role="button">
         					<i class="fa fa-chevron-circle-left"></i><b> Retour</b>
@@ -108,35 +90,32 @@ header("Location: serveurs.php");
     				<div class="row mt-4">
     					<div class="col-md-6 mx-auto bg-white shadow rounded">
     						<div class="container mt-4 mb-4">
-    							<form method="POST" action="ajouter.php">
+    							<form method="post" action="user_name.php">
+									
     								<div class="form-row">
     									<div class="form-group w-100">
-    										<input class="form-control" type="text" name="nom" placeholder="Nom du serveur" required>
+    										<input class="form-control" type="text" name="nom" placeholder="Nom de l'utilisateur" required>
     									</div>
     								</div>
     								<div class="form-row">
     									<div class="form-group w-100">
-    										<input class="form-control" type="text" name="adresse" placeholder="Adresse IP" required>
+    										<input class="form-control" type="password" name="mdp" placeholder="Mot de pass" required>
     									</div>
-    								</div>
-    								<div class="form-row">
+                                    </div>
+                                    <div class="form-row">
     									<div class="form-group w-100">
-    										<input class="form-control" type="text" name="user" placeholder="USER" required>
+    										<input class="form-control" type="password" name="nom" placeholder="confirme le mot de pass " required>
     									</div>
     								</div>
-    								<div class="form-row">
-    									<div class="form-group w-100">
-    										<input class="form-control" type="password" name="password" placeholder="Password" required>
-    									</div>
-    								</div>
+    								
     								<div class="form-row mt-4">
     									<div class="form-group col-md-6 text-right">
-    										<button class="btn btn-primary" type="submit" name="ajouter">
-    											<i class="fa fa-check"></i> Ajouter
+    										<button class="btn btn-primary" type="submit" name="changer">
+    											<i class="fa fa-check"></i> Changer
     										</button>
     									</div>
     									<div class="form-group col-md-6 text-left">
-    										<button class="btn btn-dark" type="reset" name="ajouter">
+    										<button class="btn btn-dark" type="reset" name="annuler">
     											<i class="fa fa-refresh"></i> Annuler
     										</button>
     									</div>

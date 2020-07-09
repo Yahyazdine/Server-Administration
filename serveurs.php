@@ -1,5 +1,27 @@
+<?php 
+
+if(!session_id()){ session_start();}
+
+if (!isset($_SESSION['username'])){
+	header("Location: index.php");
+		
+	}
 
 
+
+?>
+
+
+<?php 
+include'traiter.php';
+$sql="select * from user ";
+$result= mysqli_query($connect,$sql);
+
+$ligne= mysqli_fetch_row($result);
+$nom=$ligne[1];
+ 
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +33,12 @@
 <body style="background-color: #e5e5e5;">
 
 	<nav class="sidebar">
-		<div class="sidebar-head"></div>
+		<div class="sidebar-head"><div class="row">
+				<div class="col-md-4 mx-auto">
+				<img src="images/logo.jpeg" class="w-100">
+				</div>
+				
+			</div></div>
 		<div class="sidebar-body">
 			<ul>
 				<li><a href="accueil.php"><i class="fa fa-home"></i>Accueil</a></li>
@@ -27,15 +54,15 @@
 	<div class="page-container">
 		<nav class="navbar navbar-expand-sm fixed-top">
 			<div class="navbrand">
-				<a href="" class="btn">
+				<a href="user_name.php" class="btn">
 					<i class="fa fa-user" style="font-size: 25px;"></i>
-					<span style="font-size: 18px;">Nom d'utilisateur</span>
+					<span style="font-size: 18px;"><?php echo $nom?></span>
 				</a>
 			</div>
 			<div class="nav-item ml-auto">
 				<div class="profil">
 					<div class="item mr-4">
-						<a href="" class="btn" style="color:#f52a0f;font-size: 16px;">
+						<a href="logout.php" class="btn" style="color:#f52a0f;font-size: 16px;">
 							<i class="fa fa-sign-out"></i> déconnecter
 						</a>
 					</div>
@@ -63,7 +90,7 @@
 						{
 							function __construct()
 							{
-								$this->open('C:\Users\elhan\PycharmProjects\ELHANFAOUI_YASSINE\Servers.db');
+								$this->open('Servers.db');
 							}
 						}
 

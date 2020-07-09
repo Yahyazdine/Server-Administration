@@ -1,29 +1,34 @@
-﻿<?php 
-
-if(isset($_POST['ajouter']))
-{
-	$nom=$_POST['nom'];
-	$adrss=$_POST['adresse'];
-	$user=$_POST['user'];
-	$pwd=$_POST['password'];
+<?php 
+if (isset($_GET['id'])){
+ $srv= $_GET['id'];}
+ $nom=$srv;
  
-
-$pyscript = 'scripts_py/Script_add_server.py';
-$python = 'C:\Users\ANAS\AppData\Local\Programs\Python\Python38-32\python.exe';
-$cmd='$python $pyscript $nom $adrss $user $pwd';
-exec("$cmd", $output);
-
-$pyscript1 ='scripts_py/Script_storage.py';
-$cmd1='$python $pyscript1';
-exec("$cmd1", $output);
-
-$pyscript2 ='scripts_py/Script_ram.py';
-$cmd2='$python $pyscript2';
-exec("$cmd2", $output);
-
-header("Location: serveurs.php");
+ if(isset($_POST["modifier"])){
+    $name=$_POST["nom"];
+class MyDB extends SQLite3
+{
+   
+    function __construct()
+    {
+        $this->open('Servers.db');
+    }
 }
-?> 
+
+    $db = new MyDB();
+    $sql = "UPDATE info_server SET serveur_name = '".$name."' WHERE serveur_name = '".$nom."'";					
+    $db->query($sql);
+    $sqldd = "UPDATE info_DD SET servers_name = '".$name."' WHERE servers_name = '".$nom."'";					
+    $db->query($sqldd);
+    $sqlram = "UPDATE state_memory SET servers_name = '".$name."' WHERE servers_name = '".$nom."'";					
+    $db->query($sqlram);
+    $sqluser = "UPDATE info_user SET servers_name = '".$name."' WHERE servers_name = '".$nom."'";					
+    $db->query($sqluser);
+    $sqlhys = "UPDATE info_history SET servers_name = '".$name."' WHERE servers_name = '".$nom."'";					
+    $db->query($sqlhys);
+
+    header("Location: serveurs.php");
+    }
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -81,31 +86,16 @@ header("Location: serveurs.php");
     				<div class="row mt-4">
     					<div class="col-md-6 mx-auto bg-white shadow rounded">
     						<div class="container mt-4 mb-4">
-    							<form method="POST" action="ajouter.php">
+    							<form method="POST" action="modifier_serveur.php?id=<?php echo $_GET['id'] ?>">
     								<div class="form-row">
     									<div class="form-group w-100">
     										<input class="form-control" type="text" name="nom" placeholder="Nom du serveur" required>
     									</div>
     								</div>
-    								<div class="form-row">
-    									<div class="form-group w-100">
-    										<input class="form-control" type="text" name="adresse" placeholder="Adresse IP" required>
-    									</div>
-    								</div>
-    								<div class="form-row">
-    									<div class="form-group w-100">
-    										<input class="form-control" type="text" name="user" placeholder="USER" required>
-    									</div>
-    								</div>
-    								<div class="form-row">
-    									<div class="form-group w-100">
-    										<input class="form-control" type="password" name="password" placeholder="Password" required>
-    									</div>
-    								</div>
     								<div class="form-row mt-4">
     									<div class="form-group col-md-6 text-right">
-    										<button class="btn btn-primary" type="submit" name="ajouter">
-    											<i class="fa fa-check"></i> Ajouter
+    										<button class="btn btn-primary" type="submit" name="modifier">
+    											<i class="fa fa-check"></i> Modifier
     										</button>
     									</div>
     									<div class="form-group col-md-6 text-left">

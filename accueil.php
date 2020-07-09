@@ -16,7 +16,6 @@
 			<ul>
 				<li><a href="" class="active"><i class="fa fa-home"></i>Accueil</a></li>
 				<li><a href="serveurs.php"><i class="fa fa-server"></i>Serveurs</a></li>
-				<li><a href=""><i class="fa fa-users"></i>Utilisateurs</a></li>
 			</ul>
 
 		</div>

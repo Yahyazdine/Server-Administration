@@ -1,13 +1,3 @@
-<?php
-$server='127.0.0.1';
-$user="root";
-$password='';
-$datbase='test';
-$connect= mysqli_connect($server,$user,$password,$datbase);
-if (mysqli_connect_errno()) {
-    die("cannot connect to database".mysqli_connect_errno());
-}       
-?>
 
 
 <!DOCTYPE html>
@@ -18,7 +8,6 @@ if (mysqli_connect_errno()) {
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 </head>
-
 <body style="background-color: #e5e5e5;">
 
 	<nav class="sidebar">
@@ -27,7 +16,7 @@ if (mysqli_connect_errno()) {
 			<ul>
 				<li><a href="accueil.php"><i class="fa fa-home"></i>Accueil</a></li>
 				<li><a href="" class="active"><i class="fa fa-server"></i>Serveurs</a></li>
-				<li><a href=""><i class="fa fa-users"></i>Utilisateurs</a></li>
+				
 			</ul>
 
 		</div>
@@ -68,83 +57,109 @@ if (mysqli_connect_errno()) {
     			</div>
     			<hr width="100%">
 				<div class="container">
+				
+					<?php 
+						class MyDB extends SQLite3
+						{
+							function __construct()
+							{
+								$this->open('C:\Users\elhan\PycharmProjects\ELHANFAOUI_YASSINE\Servers.db');
+							}
+						}
+
+							$db = new MyDB();
+							$sql = 'select * from info_server';						
+							$rs=$db->query($sql);
+							while($row =$rs->fetchArray())
+							{
+								?>
+								
+						
 					
 					<div class="row border mt-4 mb-4 mx-auto bg-white" style="width: 800px;">
+					<?php if ($row['state']=='up'){
+										 ?>
 						<div class="col-md-4 bg-success">
-							<center style="height:100%;margin-top: 40px;"><H4>Serveur 1</H4></center>
-						</div>
+							<center style="height:100%;margin-top: 40px;"><H4><?php echo $row['serveur_name'] ?></H4></center>
+						</div> <?php  } 
+						else{  ?>
+						<div class="col-md-4 bg-danger">
+							<center style="height:100%;margin-top: 40px;"><H4><?php echo $row['serveur_name'] ?></H4></center>
+						</div> <?php  } ?>
+
 						<div class="col-md-7 h-100 pl-0 pr-0">
 							<table class="table table-striped w-100 mb-0">
  								<tr>
  									<td><b>@IP : </b></td>
- 									<td>115.111.111.1</td>
+ 									<td><?php echo $row['user_ip']?></td>
  								</tr>
  								<tr>
  									<td><b>@MAC : </b></td>
- 									<td>A5:63:38:30</td>
+ 									<td><?php echo $row['server_mac']?></td>
  								</tr>
  								<tr>
  									<td><b>Etat : </b></td>
- 									<td class="text-success">UP</td>
+									 <?php if ($row['state']=='up'){
+										 ?>
+ 									<td class="text-success"><?php echo $row['state']?></td>
  								</tr>
+									 <?php }
+									 else{
+									 ?>
+									 <td class="text-danger"><?php echo $row['state']?></td>
+ 								</tr>
+								<?php }
+								 ?>
+
 							</table>
 						</div>
+						
+						
 						<div class="col-md-1 pt-3 border">
 							<div>
-								<a href=""  class="btn" style="color:#d62a13;" data-toggle="tooltip" data-placement="top" title="Supprimer">
+								<a href=""  class="btn" style="color:#d62a13;" data-toggle="modal" data-target="#modal<?php echo $row['serveur_name'] ?>" data-placement="top" title="Supprimer">
 									<i class="fa fa-trash"></i>
 								</a>
 							</div>
+							<div class="modal fade" id="modal<?php echo $row['serveur_name'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h4 class="modal-title text-danger" id="exampleModalLabel">Attention !</h4>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                        Voulez vous vraiment supprimer cet utilisateur ?
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <a href="supprimer_server.php?id=<?php echo $row['serveur_name'] ?>" class="btn btn-danger">Continuer</a>
+                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
 							<div>
-								<a href=""  class="btn" style="color: #12b51d;" data-toggle="tooltip" data-placement="top" title="Modifier">
+								<a href="modifier_serveur.php?id=<?php echo $row['serveur_name'] ?>"  class="btn" style="color: #12b51d;" data-toggle="tooltip" data-placement="top" title="Modifier">
 									<i class="fa fa-edit"></i>
 								</a>
 							</div>
+							
 							<div>
-								<a href="détails-serveur.php"  class="btn" style="color: #0066ff;" data-toggle="tooltip" data-placement="top" title="Voir détails">
+								<a href="détails-serveur.php?id=<?php echo $row['serveur_name'] ?>"  class="btn" style="color: #0066ff;" data-toggle="tooltip" data-placement="top" title="Voir détails">
 									<i class="fa fa-angle-double-right"></i>
 								</a>
 							</div>
 						</div>
 					</div>
-					<div class="row border mt-4 mb-4 mx-auto bg-white" style="width: 800px;">
-						<div class="col-md-4 bg-danger">
-							<center style="height:100%;margin-top: 40px;"><H4>Serveur 2</H4></center>
-						</div>
-						<div class="col-md-7 h-100 pl-0 pr-0">
-							<table class="table table-striped w-100 mb-0">
- 								<tr>
- 									<td><b>@IP : </b></td>
- 									<td>115.111.111.1</td>
- 								</tr>
- 								<tr>
- 									<td><b>@MAC : </b></td>
- 									<td>A5:63:38:30</td>
- 								</tr>
- 								<tr>
- 									<td><b>Etat : </b></td>
- 									<td class="text-danger">DOWN</td>
- 								</tr>
-							</table>
-						</div>
-						<div class="col-md-1 pt-3 border">
-							<div>
-								<a href=""  class="btn" style="color:#d62a13;" data-toggle="tooltip" data-placement="top" title="Supprimer">
-									<i class="fa fa-trash"></i>
-								</a>
-							</div>
-							<div>
-								<a href=""  class="btn" style="color: #12b51d;" data-toggle="tooltip" data-placement="top" title="Modifier">
-									<i class="fa fa-edit"></i>
-								</a>
-							</div>
-							<div>
-								<a href=""  class="btn" style="color: #0066ff;" data-toggle="tooltip" data-placement="top" title="Voir détails">
-									<i class="fa fa-angle-double-right"></i>
-								</a>
-							</div>
-						</div>
-					</div>  
+			
+						<?php
+						}
+											
+							
+					?>
+					
 					
 				</div>
 			</div>
@@ -170,3 +185,6 @@ if (mysqli_connect_errno()) {
 
 </body>
 </html>
+
+
+
